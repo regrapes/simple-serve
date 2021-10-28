@@ -1,6 +1,6 @@
 {
   "name": "@regrapes/simple-serve",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "scripts": {
     "build": "rollup -c",
     "lint": "eslint --max-warnings 0 --ext ts,tsx --cache src",
