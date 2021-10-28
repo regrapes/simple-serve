@@ -22,7 +22,8 @@ export const resolveInjection = ({ file, prefix, stripPrefix, env }: Options) =>
   if (env) {
     env.forEach(name => {
       if (!(name in process.env)) {
-        throw new Error(chalk`variable {bold ${name}} does not exist in your environment`)
+        console.warn(chalk`{yellow variable {bold ${name}} does not exist in your environment}`)
+        return
       }
       injection[name] = process.env[name]!
     })
