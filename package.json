@@ -1,0 +1,89 @@
+{
+  "name": "@regrapes/simple-serve",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "rollup -c",
+    "lint": "eslint --max-warnings 0 --ext ts,tsx --cache src",
+    "commit": "cz",
+    "semantic-release": "semantic-release"
+  },
+  "private": false,
+  "bin": {
+    "simple-serve": "./bin/cli.js"
+  },
+  "keywords": [],
+  "author": "Torsten Blindert",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "compression": "^1.7.4",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "yargs": "^17.2.1"
+  },
+  "devDependencies": {
+    "@grapes-agency/eslint-config": "^1.6.2",
+    "@rollup/plugin-json": "^4.1.0",
+    "@rollup/plugin-typescript": "^8.3.0",
+    "@semantic-release/changelog": "^6.0.0",
+    "@semantic-release/git": "^10.0.0",
+    "@types/compression": "^1.7.2",
+    "@types/express": "^4.17.13",
+    "@types/node": "^16.11.6",
+    "@types/yargs": "^17.0.4",
+    "commitizen": "^4.2.4",
+    "cz-conventional-changelog": "^3.3.0",
+    "rollup": "^2.58.3",
+    "semantic-release": "^18.0.0",
+    "typescript": "^4.4.4"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "prettier": "@grapes-agency/eslint-config/prettier",
+  "eslintConfig": {
+    "extends": [
+      "@grapes-agency/eslint-config/rules/base",
+      "@grapes-agency/eslint-config/rules/prettier"
+    ],
+    "ignorePatterns": "bin",
+    "rules": {
+      "no-console": "off",
+      "no-bitwise": "off",
+      "@typescript-eslint/explicit-function-return-type": "off",
+      "@typescript-eslint/consistent-type-assertions": "off",
+      "@typescript-eslint/no-shadow": "off",
+      "@typescript-eslint/no-explicit-any": "off"
+    }
+  },
+  "release": {
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      [
+        "@semantic-release/changelog",
+        {
+          "changelogFile": "CHANGELOG.md"
+        }
+      ],
+      "@semantic-release/npm",
+      [
+        "@semantic-release/git",
+        {
+          "assets": [
+            "CHANGELOG.md",
+            "package.json",
+            "package-lock.json"
+          ],
+          "message": "chore(release): 🚀 ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
+        }
+      ],
+      "@semantic-release/github"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}
