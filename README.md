@@ -4,7 +4,7 @@ Serves a static folder while injecting configured env variables in `process.env.
 
 
 ```
-Usage: simple serve [options] <root>
+Usage: simple-serve [options] <root>
 
 Options:
   -V, --version          output the version number
